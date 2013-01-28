@@ -33,6 +33,7 @@
     [super viewDidLoad];
      kPlaceholderPostMessage = @"Say something to your friend..";
     [self resetPostMessage];
+    postButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,8 +80,9 @@
     if ([textView.text isEqualToString:@""] )
     {
         [self resetPostMessage];
-        postButton.enabled = NO;
     }
+    else
+        postButton.enabled = YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *) event
