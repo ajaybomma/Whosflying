@@ -10,7 +10,6 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "FriendPickerController.h"
 #import "FriendsViewController.h"
 
 @interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,FBFriendPickerDelegate,CLLocationManagerDelegate,MKMapViewDelegate>
