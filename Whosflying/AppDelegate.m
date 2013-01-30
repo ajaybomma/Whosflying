@@ -105,10 +105,12 @@
 
 -(void)openSession
 {
-   NSArray *permissions = [NSArray arrayWithObjects: @"user_location",@"friends_location",@"email",nil];
-   [FBSession openActiveSessionWithReadPermissions:permissions allowLoginUI:YES completionHandler:^(FBSession *session,
-                                                                                                     FBSessionState status,
-                                                                                                     NSError *error)  {
+    NSArray *permissions = [NSArray arrayWithObjects: @"user_location",@"friends_location",@"email",nil];
+    [FBSession openActiveSessionWithReadPermissions:permissions
+                                       allowLoginUI:YES
+                                  completionHandler:^(FBSession *session,
+                                                      FBSessionState status,
+                                                      NSError *error)  {
         [self sessionStateChanged:session state:status error:error ];
         [FBSession setActiveSession:session];}];
 }

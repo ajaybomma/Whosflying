@@ -29,6 +29,11 @@
                                                                              style:UIBarButtonItemStyleBordered
                                                                             target:self
                                                                             action:@selector(logout:)];
+//    if(FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
+//    {
+//        [self friendsAroundTheUser];
+//        [self userDetails];
+//    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -70,11 +75,11 @@
 
 -(IBAction)ok:(id)sender
 {
-    FriendsViewController *friendsViewController = [[FriendsViewController alloc]
-                                                    initWithNibName:@"FriendsViewController"
+    FriendsAroundYouViewController *friendsAroundYouViewController = [[FriendsAroundYouViewController alloc]
+                                                    initWithNibName:@"FriendsAroundYouViewController"
                                                              bundle:nil];
-    friendsViewController.matchedFriendsArray = [NSArray arrayWithArray:aroundFriendsArray];
-    [self.navigationController pushViewController:friendsViewController animated:TRUE];
+    friendsAroundYouViewController.matchedFriendsArray = [NSArray arrayWithArray:aroundFriendsArray];
+    [self presentViewController:friendsAroundYouViewController animated:YES completion:Nil];
 }
 
 -(void)friendsAroundTheUser
@@ -102,7 +107,8 @@
                                                                     BOOL flag = FALSE;
                                                                     for (int j = 1; j < [userLocationArray count]; j++)
                                                                     {
-                                                                       if( [[friendsLocationArray objectAtIndex:i] isEqualToString:[userLocationArray objectAtIndex:j]])
+                                                                       if( [[friendsLocationArray objectAtIndex:i]
+                                                                            isEqualToString:[userLocationArray objectAtIndex:j]])
                                                                        {
                                                                            [aroundFriendsArray addObject:friend];
                                                                            flag = TRUE;

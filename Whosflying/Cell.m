@@ -16,9 +16,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-        profilePicture = [[FBProfilePictureView alloc]initWithFrame:CGRectMake(-30,0, 100, 40)];
+        profilePicture = [[FBProfilePictureView alloc]initWithFrame:CGRectMake(-30,0, 100, 43)];
         [self addSubview:profilePicture];
-        textLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 0, 280, 50)];
+        textLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 0, 280, 40)];
         [self addSubview:textLabel];
     }
     return self;

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FriendsViewController.h"
+#import "FriendsAroundYouViewController.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface PostCommentViewController : UIViewController<UITextViewDelegate>
 

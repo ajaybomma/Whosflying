@@ -30,9 +30,9 @@
 		FA59745D16AD5467008A6B9F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA59745C16AD5467008A6B9F /* MapKit.framework */; };
 		FA90C30316B14DBE00AB3A6C /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA90C30116B14DBE00AB3A6C /* PostCommentViewController.m */; };
 		FA90C30416B14DBE00AB3A6C /* PostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA90C30216B14DBE00AB3A6C /* PostCommentViewController.xib */; };
-		FADEE13916A7BE270049234B /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADEE13716A7BE270049234B /* FriendsViewController.m */; };
-		FADEE13A16A7BE270049234B /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADEE13816A7BE270049234B /* FriendsViewController.xib */; };
 		FADEE14416A7EDC30049234B /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = FADEE14316A7EDC30049234B /* Cell.m */; };
+		FAEB265F16B7A602003E172C /* FriendsAroundYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEB265D16B7A601003E172C /* FriendsAroundYouViewController.m */; };
+		FAEB266016B7A602003E172C /* FriendsAroundYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEB265E16B7A601003E172C /* FriendsAroundYouViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,11 +66,11 @@
 		FA90C30016B14DBE00AB3A6C /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommentViewController.h; sourceTree = "<group>"; };
 		FA90C30116B14DBE00AB3A6C /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommentViewController.m; sourceTree = "<group>"; };
 		FA90C30216B14DBE00AB3A6C /* PostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCommentViewController.xib; sourceTree = "<group>"; };
-		FADEE13616A7BE270049234B /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
-		FADEE13716A7BE270049234B /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
-		FADEE13816A7BE270049234B /* FriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsViewController.xib; sourceTree = "<group>"; };
 		FADEE14216A7EDC30049234B /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		FADEE14316A7EDC30049234B /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		FAEB265C16B7A601003E172C /* FriendsAroundYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsAroundYouViewController.h; sourceTree = "<group>"; };
+		FAEB265D16B7A601003E172C /* FriendsAroundYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsAroundYouViewController.m; sourceTree = "<group>"; };
+		FAEB265E16B7A601003E172C /* FriendsAroundYouViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsAroundYouViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,15 +137,15 @@
 				FA470A59169FED4D00558CD3 /* ViewController.m */,
 				FA470A76169FF45200558CD3 /* LoginViewController.h */,
 				FA470A77169FF45200558CD3 /* LoginViewController.m */,
-				FADEE13616A7BE270049234B /* FriendsViewController.h */,
-				FADEE13716A7BE270049234B /* FriendsViewController.m */,
 				FA90C30016B14DBE00AB3A6C /* PostCommentViewController.h */,
 				FA90C30116B14DBE00AB3A6C /* PostCommentViewController.m */,
 				FADEE14216A7EDC30049234B /* Cell.h */,
 				FADEE14316A7EDC30049234B /* Cell.m */,
+				FAEB265C16B7A601003E172C /* FriendsAroundYouViewController.h */,
+				FAEB265D16B7A601003E172C /* FriendsAroundYouViewController.m */,
+				FAEB265E16B7A601003E172C /* FriendsAroundYouViewController.xib */,
 				FA470A78169FF45200558CD3 /* LoginViewController.xib */,
 				FA470A5B169FED4E00558CD3 /* ViewController.xib */,
-				FADEE13816A7BE270049234B /* FriendsViewController.xib */,
 				FA90C30216B14DBE00AB3A6C /* PostCommentViewController.xib */,
 				FA470A47169FED4D00558CD3 /* Supporting Files */,
 			);
@@ -225,8 +225,8 @@
 				FA470A6D169FEF8F00558CD3 /* FacebookSDKResources.bundle in Resources */,
 				FA470A6F169FEF9C00558CD3 /* FBUserSettingsViewResources.bundle in Resources */,
 				FA470A7A169FF45200558CD3 /* LoginViewController.xib in Resources */,
-				FADEE13A16A7BE270049234B /* FriendsViewController.xib in Resources */,
 				FA90C30416B14DBE00AB3A6C /* PostCommentViewController.xib in Resources */,
+				FAEB266016B7A602003E172C /* FriendsAroundYouViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,9 +241,9 @@
 				FA470A51169FED4D00558CD3 /* AppDelegate.m in Sources */,
 				FA470A5A169FED4D00558CD3 /* ViewController.m in Sources */,
 				FA470A79169FF45200558CD3 /* LoginViewController.m in Sources */,
-				FADEE13916A7BE270049234B /* FriendsViewController.m in Sources */,
 				FADEE14416A7EDC30049234B /* Cell.m in Sources */,
 				FA90C30316B14DBE00AB3A6C /* PostCommentViewController.m in Sources */,
+				FAEB265F16B7A602003E172C /* FriendsAroundYouViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

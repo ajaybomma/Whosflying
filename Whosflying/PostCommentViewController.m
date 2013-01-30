@@ -16,7 +16,7 @@
 @end
 
 @implementation PostCommentViewController
-@synthesize commentsTextView,postParameters,friendId,postButton;
+@synthesize commentsTextView,postParameters,friendId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +33,6 @@
     [super viewDidLoad];
      kPlaceholderPostMessage = @"Say something to your friend..";
     [self resetPostMessage];
-    postButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,7 +47,8 @@
 
 -(IBAction)postButtonTapped:(id)sender
 {
-    if(![commentsTextView.text isEqualToString:kPlaceholderPostMessage] && ![commentsTextView.text isEqualToString:@""])
+    if(![commentsTextView.text isEqualToString:kPlaceholderPostMessage] &&
+       ![commentsTextView.text isEqualToString:@""])
     {
         [postParameters setObject:commentsTextView.text forKey:@"message"];
         [postParameters setObject:friendId forKey:@"friend_id"];
@@ -81,8 +81,6 @@
     {
         [self resetPostMessage];
     }
-    else
-        postButton.enabled = YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *) event
@@ -109,6 +107,9 @@
                                               id result,
                                               NSError *error)
      {
+         NSLog(@"value +++++%@",result);
+         NSLog(@"connection ++%@",connection);
+         NSLog(@"error ++++%@",error);
          NSString *alertText;
          if (error)
          {
@@ -126,8 +127,7 @@
                                      message:alertText
                                     delegate:self
                            cancelButtonTitle:@"OK!"
-                           otherButtonTitles:nil]
-          show];
+                           otherButtonTitles:nil] show];
      }];
 }
 

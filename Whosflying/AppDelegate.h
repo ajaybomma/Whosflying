@@ -22,5 +22,4 @@
 
 -(void)openSession;
 -(void)showLoginView;
-//- (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;
 @end
