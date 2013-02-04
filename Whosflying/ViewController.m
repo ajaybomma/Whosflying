@@ -13,37 +13,62 @@
 @end
 
 @implementation ViewController
-@synthesize profilePicture,userNameLabel,aroundFriendsTableView,aroundFriendsArray,locationManager,userLocationArray;
-@synthesize userLocation;
+@synthesize profilePicture,locationManager,userLocationArray,pListDataArray,rootPath,pListPath;
+@synthesize userNameLabel,friendsAroundUserArray,currentLatitude,currentLongitude;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    pListDataArray = [[NSMutableArray alloc] init];
+    friendsAroundUserArray = [[NSMutableArray alloc] init];
     userLocationArray = [[NSArray alloc]init];
     locationManager = [[CLLocationManager alloc]init];
     [locationManager setDelegate:self];
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Logout"
-                                                                             style:UIBarButtonItemStyleBordered
-                                                                            target:self
-                                                                            action:@selector(logout:)];
-//    if(FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
-//    {
-//        [self friendsAroundTheUser];
-//        [self userDetails];
-//    }
+    NSString *errorDesc = nil;
+    NSPropertyListFormat format;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
+                                                                              style:UIBarButtonItemStyleBordered
+                                                                             target:self
+                                                                             action:@selector(logout:)];
+    rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES)
+                objectAtIndex:0];
+    
+    pListPath = [rootPath stringByAppendingPathComponent:@"Data.plist"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:pListPath])
+    {
+        [[NSFileManager defaultManager] createFileAtPath:pListPath
+                                                contents:nil
+                                              attributes:nil];
+    }
+    else
+    {
+        NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:pListPath];
+        if ([plistXML length])
+        {
+            pListDataArray = (NSMutableArray *)[NSPropertyListSerialization
+                                                propertyListFromData:plistXML
+                                                mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                                format:&format
+                                                errorDescription:&errorDesc];
+        }
+    }
+    if (!pListDataArray)
+    {
+        NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    aroundFriendsArray = [[NSMutableArray alloc]init];
+    friendsAroundUserArray = [[NSMutableArray alloc]init];
     if(FBSession.activeSession.isOpen)
     {
+        [self writeUserDetailsToPlist];
         [self friendsAroundTheUser];
-        [self userDetails];
     }
 }
 
@@ -57,97 +82,118 @@
     [FBSession.activeSession closeAndClearTokenInformation];
 }
 
--(void)userDetails
+-(void)writeUserDetailsToPlist
 {
     if(FBSession.activeSession.isOpen)
     {
         [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection,
-                                                              NSDictionary<FBGraphUser> *user,
-                                                              NSError *error){
-                                                                if(!error)
-                                                                {
-                                                                    profilePicture.profileID = user.id;
-                                                                    userNameLabel.text = user.name;
-                                                                }
-        }];
+                                                               NSDictionary<FBGraphUser> *user,
+                                                               NSError *error){
+             if(!error)
+             {
+                 profilePicture.profileID = user.id;
+                 userNameLabel.text = user.name;
+                 NSDictionary *userDetailsDict = [NSDictionary dictionaryWithObjects:
+                                                 [NSArray arrayWithObjects:user.id,user.name,currentLatitude,currentLongitude, nil]
+                                                  forKeys:[NSArray arrayWithObjects:@"ID",@"Name",@"Latitude",@"Longitude", nil]];
+                 if([pListDataArray count] > 0)
+                 {
+                     int count = 0;
+                     for (int i = 0; i < [pListDataArray count]; i++)
+                     {
+                         NSDictionary *tempDictionary = [pListDataArray objectAtIndex:i];
+                         if([[tempDictionary objectForKey: @"ID"]
+                             isEqual:[userDetailsDict objectForKey:@"ID"]])
+                         {
+                             count ++;
+                             [pListDataArray removeObjectAtIndex:i];
+                             [pListDataArray addObject:userDetailsDict];
+                             [pListDataArray writeToFile:pListPath atomically:YES];
+                             break;
+                         }
+                         else
+                         {
+                             if(i == [pListDataArray count]-1)
+                             {
+                                 [pListDataArray addObject:userDetailsDict];
+                                 [pListDataArray writeToFile:pListPath atomically:YES];
+                             }
+                         }
+                     }
+                 }
+                 else
+                 {
+                     [pListDataArray addObject:userDetailsDict];
+                     if(pListDataArray)
+                     {
+                         NSLog(@"plistdata array %@", pListDataArray);
+                         [pListDataArray writeToFile:pListPath atomically:YES];
+                     }
+                 }
+             }
+            else
+            NSLog(@"error description %@",error.description);
+}];
     }
+}
+
+-(void)friendsAroundTheUser
+{
+    [[FBRequest requestForMyFriends] startWithCompletionHandler:^(FBRequestConnection *connection,
+                                                                  id result,
+                                                                  NSError *error)
+     {
+         NSArray *data = (NSArray *)[result objectForKey:@"data"];
+         CLLocation *userLocation = [[CLLocation alloc]
+                                     initWithLatitude:(CLLocationDegrees)[currentLatitude doubleValue]
+                                     longitude:(CLLocationDegrees)[currentLongitude doubleValue]];
+         for (int i = 0; i < [pListDataArray count]; i++)
+         {
+             CLLocationCoordinate2D coord;
+             NSDictionary *tempDict = [pListDataArray objectAtIndex:i];
+             NSNumber *lat = [tempDict objectForKey:@"Latitude"];
+             NSNumber *longt = [tempDict objectForKey:@"Longitude"];
+             coord.latitude = (CLLocationDegrees)[lat doubleValue];
+             coord.longitude = (CLLocationDegrees)[longt doubleValue];
+             CLLocation *friendLocation = [[CLLocation alloc]
+                                           initWithLatitude:coord.latitude
+                                           longitude:coord.longitude];
+             NSString *friendId = [tempDict objectForKey:@"ID"];
+             if([friendLocation distanceFromLocation:userLocation] <= 8046.72)
+             {
+                 for (FBGraphObject<FBGraphUser> *friend in data)
+                 {
+                     if ([friendId isEqualToString:[friend id]])
+                     {
+                         [friendsAroundUserArray addObject:friend];
+                         break;
+                     }
+                 }
+             }
+         }
+     }];
 }
 
 -(IBAction)ok:(id)sender
 {
     FriendsAroundYouViewController *friendsAroundYouViewController = [[FriendsAroundYouViewController alloc]
-                                                    initWithNibName:@"FriendsAroundYouViewController"
-                                                             bundle:nil];
-    friendsAroundYouViewController.matchedFriendsArray = [NSArray arrayWithArray:aroundFriendsArray];
+                                                            initWithNibName:@"FriendsAroundYouViewController"
+                                                                                                 bundle:nil];
+    friendsAroundYouViewController.matchedFriendsArray = [NSArray arrayWithArray:friendsAroundUserArray];
     [self presentViewController:friendsAroundYouViewController animated:YES completion:Nil];
 }
 
--(void)friendsAroundTheUser
-{
-    
-    FBRequest *friendRequest = [FBRequest requestForGraphPath:@"me/friends?fields=location,name"];
-    [ friendRequest startWithCompletionHandler:^(FBRequestConnection *connection,
-                                                 id result,
-                                                 NSError *error)
-                                                {
-                                                    NSArray *data = (NSArray *)[result objectForKey:@"data"];
-                                                    for (FBGraphObject<FBGraphUser> *friend in data)
-                                                    {
-                                                       NSArray *friendsLocationArray = [[NSArray alloc]init];
-                                                        if([[friend location] name] != (id)[NSNull null])
-                                                            friendsLocationArray = [[[friend location] name] componentsSeparatedByString:@", "];
-                                                        else
-                                                            continue;
-                                                        if([[userLocationArray objectAtIndex:0] isEqual:[friendsLocationArray objectAtIndex:0]])
-                                                        {
-                                                            if([userLocationArray count] > 1 && [friendsLocationArray count] > 1)
-                                                            {
-                                                                for (int i = 1; i < [friendsLocationArray count]; i++)
-                                                                {
-                                                                    BOOL flag = FALSE;
-                                                                    for (int j = 1; j < [userLocationArray count]; j++)
-                                                                    {
-                                                                       if( [[friendsLocationArray objectAtIndex:i]
-                                                                            isEqualToString:[userLocationArray objectAtIndex:j]])
-                                                                       {
-                                                                           [aroundFriendsArray addObject:friend];
-                                                                           flag = TRUE;
-                                                                           break;
-                                                                       }
-                                                                    }
-                                                                    if(flag == TRUE)
-                                                                        break;
-                                                                }
-                                                            }
-                                                            else
-                                                                [aroundFriendsArray addObject:friend];
-                                                        }
-                                                    }}];
-}
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+-(void)locationManager:(CLLocationManager *)manager
+    didUpdateLocations:(NSArray *)locations
 {
     [locationManager stopUpdatingLocation];
-    CLGeocoder *geoCoder = [[CLGeocoder alloc]init];
-    CLLocation* location = [locations lastObject];
-    [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error)
-     {
-         CLPlacemark *placemark;
-         if (error == nil && [placemarks count] > 0)
-         {
-            placemark = [placemarks lastObject];
-             if(placemark.locality != NULL)
-                 userLocationArray = [NSArray arrayWithObjects:placemark.locality,placemark.administrativeArea,placemark.country, nil];
-             else
-                 userLocationArray = [NSArray arrayWithObjects:@"Hyderabad",placemark.administrativeArea,placemark.country, nil];
-         }
-         else {
-             NSLog(@"%@", error.debugDescription);
-         }
-     }];
+    CLLocation *currentLocation = [locations lastObject];
+    currentLongitude = [NSNumber numberWithDouble:currentLocation.coordinate.longitude];
+    currentLatitude = [NSNumber numberWithDouble:currentLocation.coordinate.latitude];
 }
 
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+-(void)locationManager:(CLLocationManager *)manager
+      didFailWithError:(NSError *)error
 {
     NSLog(@"error %@",error);
 }

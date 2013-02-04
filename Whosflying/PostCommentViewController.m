@@ -11,12 +11,11 @@
 @interface PostCommentViewController ()
 {
     NSString *kPlaceholderPostMessage;
-    
 }
 @end
 
 @implementation PostCommentViewController
-@synthesize commentsTextView,postParameters,friendId;
+@synthesize commentsTextView,postParameters,friendId,postButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +32,7 @@
     [super viewDidLoad];
      kPlaceholderPostMessage = @"Say something to your friend..";
     [self resetPostMessage];
+    postButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,25 +47,31 @@
 
 -(IBAction)postButtonTapped:(id)sender
 {
-    if(![commentsTextView.text isEqualToString:kPlaceholderPostMessage] &&
+    if(![commentsTextView.text isEqualToString:kPlaceholderPostMessage])
+    {
+        postButton.enabled = YES;
+        if(![commentsTextView.text isEqualToString:kPlaceholderPostMessage] &&
        ![commentsTextView.text isEqualToString:@""])
-    {
-        [postParameters setObject:commentsTextView.text forKey:@"message"];
-        [postParameters setObject:friendId forKey:@"friend_id"];
-    }
+        {
+            [postParameters setObject:commentsTextView.text forKey:@"message"];
+            [postParameters setObject:friendId forKey:@"friend_id"];
+        }
     
-    if([FBSession.activeSession.permissions indexOfObject:@"publish_stream"] == NSNotFound)
-    {
-        [FBSession.activeSession reauthorizeWithPublishPermissions:[NSArray arrayWithObjects:@"publish_stream",nil]
+        if([FBSession.activeSession.permissions indexOfObject:@"publish_stream"] == NSNotFound)
+        {
+            [FBSession.activeSession reauthorizeWithPublishPermissions:[NSArray arrayWithObjects:@"publish_stream",nil]
                                                    defaultAudience:FBSessionDefaultAudienceFriends
                                                  completionHandler:^(FBSession *session, NSError *error){
                                                      [self publishStory];
                                                  }];
+        }
+        else
+            [self publishStory];
     }
     else
-        [self publishStory];
-    
+        postButton.enabled = NO;
 }
+
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     if ([textView.text isEqualToString:kPlaceholderPostMessage])
@@ -81,6 +87,8 @@
     {
         [self resetPostMessage];
     }
+    else
+        postButton.enabled = YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *) event
@@ -107,9 +115,6 @@
                                               id result,
                                               NSError *error)
      {
-         NSLog(@"value +++++%@",result);
-         NSLog(@"connection ++%@",connection);
-         NSLog(@"error ++++%@",error);
          NSString *alertText;
          if (error)
          {
