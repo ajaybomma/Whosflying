@@ -60,8 +60,8 @@
         if([FBSession.activeSession.permissions indexOfObject:@"publish_stream"] == NSNotFound)
         {
             [FBSession.activeSession reauthorizeWithPublishPermissions:[NSArray arrayWithObjects:@"publish_stream",nil]
-                                                   defaultAudience:FBSessionDefaultAudienceFriends
-                                                 completionHandler:^(FBSession *session, NSError *error){
+                                                       defaultAudience:FBSessionDefaultAudienceFriends
+                                                     completionHandler:^(FBSession *session, NSError *error){
                                                      [self publishStory];
                                                  }];
         }

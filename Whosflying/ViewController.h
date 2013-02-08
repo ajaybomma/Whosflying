@@ -21,15 +21,16 @@
 @property (strong,nonatomic) NSString *rootPath;
 @property (strong,nonatomic) NSString *pListPath;
 @property (strong,nonatomic) NSMutableArray *pListDataArray;
+@property (strong,nonatomic) NSMutableArray *dataListIdsArray;
 @property (strong,nonatomic) CLLocationManager *locationManager;
-@property (strong,nonatomic) NSArray *userLocationArray;
 @property (strong,nonatomic) id<FBGraphPlace> userLocation;
 @property (strong,nonatomic) NSMutableArray *friendsAroundUserArray;
-@property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePicture;
-@property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (strong,nonatomic) IBOutlet FBProfilePictureView *profilePicture;
+@property (strong,nonatomic) IBOutlet UILabel *userNameLabel;
 
 -(void)logout:(id)sender;
 -(void)writeUserDetailsToPlist;
 -(IBAction)ok:(id)sender;
 -(void)friendsAroundTheUser;
+-(void)friendsOfFriendsAroundUser;
 @end

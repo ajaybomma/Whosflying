@@ -57,39 +57,52 @@
     Cell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[Cell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [[Cell alloc]
+                initWithStyle:UITableViewCellStyleValue1
+              reuseIdentifier:CellIdentifier];
     }
     if(searching)
     {
-            cell.textLabel.text = [[listOfSearchedFriends objectAtIndex:indexPath.row] name];
-            cell.profilePicture.profileID = [[listOfSearchedFriends objectAtIndex:indexPath.row] id];
+        cell.textLabel.text =
+        [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"Name"];
+        cell.profilePicture.profileID =
+        [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"ID"];
     }
     else
     {
-        cell.textLabel.text = [[matchedFriendsArray objectAtIndex:indexPath.row] name];
-        cell.profilePicture.profileID = [[matchedFriendsArray objectAtIndex:indexPath.row] id];
+        cell.textLabel.text =
+        [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"Name"];
+        cell.profilePicture.profileID =
+        [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"ID"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView
+ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PostCommentViewController *postCommentViewController = [[PostCommentViewController alloc]
-                                                            initWithNibName:@"PostCommentViewController"
-                                                            bundle:nil];
+    PostCommentViewController *postCommentViewController =
+    [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController"
+                                                bundle:nil];
     [self presentViewController:postCommentViewController animated:YES completion:nil];
     if(searching)
     {
-        postCommentViewController.profilePicture.profileID = [[listOfSearchedFriends objectAtIndex:indexPath.row] id];
-        postCommentViewController.friendNameLabel.text = [[listOfSearchedFriends objectAtIndex:indexPath.row] name];
-        postCommentViewController.friendId = [[listOfSearchedFriends objectAtIndex:indexPath.row] id];
+        postCommentViewController.profilePicture.profileID =
+        [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"ID"];
+        postCommentViewController.friendNameLabel.text =
+        [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"Name"];
+        postCommentViewController.friendId =
+        [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"ID"];
     }
     else
     {
-        postCommentViewController.profilePicture.profileID = [[matchedFriendsArray objectAtIndex:indexPath.row] id];
-        postCommentViewController.friendNameLabel.text = [[matchedFriendsArray objectAtIndex:indexPath.row] name];
-        postCommentViewController.friendId = [[matchedFriendsArray objectAtIndex:indexPath.row] id];
+        postCommentViewController.profilePicture.profileID =
+        [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"ID"];
+        postCommentViewController.friendNameLabel.text =
+        [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"Name"];
+        postCommentViewController.friendId =
+        [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"ID"];
      }
 }
 

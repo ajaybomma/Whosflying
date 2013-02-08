@@ -105,8 +105,7 @@
 
 -(void)openSession
 {
-    NSArray *permissions = [NSArray arrayWithObjects: @"user_location",@"friends_location",@"email",nil];
-    [FBSession openActiveSessionWithReadPermissions:permissions
+    [FBSession openActiveSessionWithReadPermissions: nil
                                        allowLoginUI:YES
                                   completionHandler:^(FBSession *session,
                                                       FBSessionState status,
