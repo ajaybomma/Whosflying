@@ -13,24 +13,16 @@
 #import "FriendsAroundYouViewController.h"
 
 @interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,
-                                            FBFriendPickerDelegate,CLLocationManagerDelegate,
-                                            MKMapViewDelegate>
+CLLocationManagerDelegate,MKMapViewDelegate>
 
 @property (strong,nonatomic) NSNumber *currentLatitude;
 @property (strong,nonatomic) NSNumber *currentLongitude;
-@property (strong,nonatomic) NSString *rootPath;
-@property (strong,nonatomic) NSString *pListPath;
-@property (strong,nonatomic) NSMutableArray *pListDataArray;
-@property (strong,nonatomic) NSMutableArray *dataListIdsArray;
 @property (strong,nonatomic) CLLocationManager *locationManager;
 @property (strong,nonatomic) id<FBGraphPlace> userLocation;
-@property (strong,nonatomic) NSMutableArray *friendsAroundUserArray;
 @property (strong,nonatomic) IBOutlet FBProfilePictureView *profilePicture;
 @property (strong,nonatomic) IBOutlet UILabel *userNameLabel;
 
 -(void)logout:(id)sender;
--(void)writeUserDetailsToPlist;
+-(void)storeUserDetailsToDatabase;
 -(IBAction)ok:(id)sender;
--(void)friendsAroundTheUser;
--(void)friendsOfFriendsAroundUser;
 @end

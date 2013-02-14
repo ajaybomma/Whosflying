@@ -21,7 +21,8 @@
     self.navController = [[UINavigationController alloc]initWithRootViewController:self.mainViewController];
     self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
-    if(FBSession.activeSession.isOpen)
+    [FBProfilePictureView class];
+    if(FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
     {
         [self openSession];
     }
@@ -29,7 +30,6 @@
     {
         [self showLoginView];
     }
-    [FBProfilePictureView class];
     return YES;
 }
 
@@ -78,7 +78,7 @@
             [self.navController topViewController];
             if ([[topViewController presentedViewController]
                  isKindOfClass:[LoginViewController class]]) {
-                [topViewController dismissViewControllerAnimated:YES completion:nil];
+                [topViewController dismissViewControllerAnimated:NO completion:NULL];
             }
         }
             break;

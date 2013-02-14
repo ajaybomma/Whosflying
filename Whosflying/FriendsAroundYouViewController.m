@@ -147,7 +147,7 @@
     NSString *searchText = searchBar.text;
     for (int i =0; i < [matchedFriendsArray count]; i++ )
     {
-        NSRange titleResultsRange = [[[matchedFriendsArray objectAtIndex:i] name]
+        NSRange titleResultsRange = [[[matchedFriendsArray objectAtIndex:i] objectForKey:@"Name"]
                                      rangeOfString:searchText
                                      options:NSCaseInsensitiveSearch];
         if(titleResultsRange.length > 0)
