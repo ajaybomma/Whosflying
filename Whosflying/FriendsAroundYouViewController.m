@@ -11,6 +11,7 @@
 #import "Cell.h"
 
 @interface FriendsAroundYouViewController ()
+@property (nonatomic, strong) NSMutableData *responseData;
 
 @end
 
@@ -31,8 +32,17 @@
     [super viewDidLoad];
     searching = NO;
     listOfSearchedFriends = [[NSMutableArray alloc] init];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://173.255.195.108:3011/users/555555"]]];
+    [request setValue:@"Content-Type" forHTTPHeaderField:@"application/x-www-form-urlencoded"];
+    [request setHTTPMethod:@"GET"];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+    
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.responseData = [[NSMutableData alloc]init];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -59,7 +69,7 @@
     {
         cell = [[Cell alloc]
                 initWithStyle:UITableViewCellStyleValue1
-              reuseIdentifier:CellIdentifier];
+                reuseIdentifier:CellIdentifier];
     }
     if(searching)
     {
@@ -80,7 +90,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView
- didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PostCommentViewController *postCommentViewController =
     [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController"
@@ -103,12 +113,12 @@
         [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"Name"];
         postCommentViewController.friendId =
         [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"ID"];
-     }
+    }
 }
 
 - (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        return indexPath;
+    return indexPath;
 }
 
 -(IBAction)Back:(id)sender
@@ -128,7 +138,7 @@
 }
 
 - (void)searchBar:(UISearchBar *)theSearchBar textDidChange:(NSString *)searchText
-{    
+{
     [listOfSearchedFriends removeAllObjects];
     if([searchText length] > 0)
     {
@@ -163,6 +173,24 @@
     self.navigationItem.rightBarButtonItem = nil;
     friendsListTableView.scrollEnabled = YES;
     [self.friendsListTableView reloadData];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSLog(@"didReceiveResponse");
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    NSLog(@"data ++%@",data);
+    [self.responseData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSLog(@"finish loading");
+    id response = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
+    NSLog(@"id  +++++%@",response);
 }
 
 @end
