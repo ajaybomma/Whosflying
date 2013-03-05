@@ -18,11 +18,15 @@ CLLocationManagerDelegate,MKMapViewDelegate>
 @property (strong,nonatomic) NSNumber *currentLatitude;
 @property (strong,nonatomic) NSNumber *currentLongitude;
 @property (strong,nonatomic) CLLocationManager *locationManager;
+@property (strong,nonatomic) FriendsAroundYouViewController *friendsAroundYouViewController;
+@property (strong,nonatomic) FBPlacePickerViewController *placePickerController;
 @property (strong,nonatomic) id<FBGraphPlace> userLocation;
 @property (strong,nonatomic) IBOutlet FBProfilePictureView *profilePicture;
+@property (strong,nonatomic) IBOutlet UIButton *continueButton;
 @property (strong,nonatomic) IBOutlet UILabel *userNameLabel;
 
--(void)logout:(id)sender;
 -(void)storeUserDetailsToDatabase;
--(IBAction)ok:(id)sender;
+-(void)logOutButtonPressed:(id)sender;
+-(void)aboutUsButtonPressed:(id)sender;
+-(IBAction)continueButtonPressed:(id)sender;
 @end

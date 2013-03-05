@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F68CA6616DC802400FB5D0A /* facebook-login-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F68CA6516DC802400FB5D0A /* facebook-login-button.png */; };
+		2F68CA7D16DC85AA00FB5D0A /* Continue Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F68CA7C16DC85AA00FB5D0A /* Continue Image.png */; };
+		2F68CA7F16DC882300FB5D0A /* Options.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F68CA7E16DC882300FB5D0A /* Options.png */; };
 		FA470A41169FED4D00558CD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA470A40169FED4D00558CD3 /* UIKit.framework */; };
 		FA470A43169FED4D00558CD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA470A42169FED4D00558CD3 /* Foundation.framework */; };
 		FA470A45169FED4D00558CD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA470A44169FED4D00558CD3 /* CoreGraphics.framework */; };
@@ -36,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F68CA6516DC802400FB5D0A /* facebook-login-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-login-button.png"; sourceTree = "<group>"; };
+		2F68CA7C16DC85AA00FB5D0A /* Continue Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Continue Image.png"; sourceTree = "<group>"; };
+		2F68CA7E16DC882300FB5D0A /* Options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Options.png; sourceTree = "<group>"; };
 		FA470A3C169FED4D00558CD3 /* Whosflying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whosflying.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA470A40169FED4D00558CD3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FA470A42169FED4D00558CD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -96,6 +102,9 @@
 		FA470A31169FED4D00558CD3 = {
 			isa = PBXGroup;
 			children = (
+				2F68CA7E16DC882300FB5D0A /* Options.png */,
+				2F68CA6516DC802400FB5D0A /* facebook-login-button.png */,
+				2F68CA7C16DC85AA00FB5D0A /* Continue Image.png */,
 				FA470A46169FED4D00558CD3 /* Whosflying */,
 				FA470A3F169FED4D00558CD3 /* Frameworks */,
 				FA470A3D169FED4D00558CD3 /* Products */,
@@ -227,6 +236,9 @@
 				FA470A7A169FF45200558CD3 /* LoginViewController.xib in Resources */,
 				FA90C30416B14DBE00AB3A6C /* PostCommentViewController.xib in Resources */,
 				FAEB266016B7A602003E172C /* FriendsAroundYouViewController.xib in Resources */,
+				2F68CA6616DC802400FB5D0A /* facebook-login-button.png in Resources */,
+				2F68CA7D16DC85AA00FB5D0A /* Continue Image.png in Resources */,
+				2F68CA7F16DC882300FB5D0A /* Options.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +290,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: praneeth patlola (67YQACTWSY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: praneeth patlola (67YQACTWSY)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -293,6 +306,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -306,7 +321,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: praneeth patlola (67YQACTWSY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: praneeth patlola (67YQACTWSY)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -314,6 +330,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -322,6 +340,8 @@
 		FA470A61169FED4E00558CD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: praneeth patlola (67YQACTWSY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: praneeth patlola (67YQACTWSY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Whosflying\"",
@@ -331,6 +351,8 @@
 				INFOPLIST_FILE = "Whosflying/Whosflying-Info.plist";
 				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -339,6 +361,8 @@
 		FA470A62169FED4E00558CD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: praneeth patlola (67YQACTWSY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: praneeth patlola (67YQACTWSY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Whosflying\"",
@@ -348,6 +372,8 @@
 				INFOPLIST_FILE = "Whosflying/Whosflying-Info.plist";
 				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -11,12 +11,13 @@
 @interface ViewController ()
 
 @property (nonatomic, strong) NSMutableData *responseData;
+//@property (nonatomic, strong) NSArray *optionsArray;
 
 @end
 
 @implementation ViewController
-@synthesize profilePicture,locationManager;
-@synthesize userNameLabel,currentLatitude,currentLongitude;
+@synthesize profilePicture,locationManager,friendsAroundYouViewController;
+@synthesize userNameLabel,currentLatitude,currentLongitude,placePickerController;
 
 - (void)viewDidLoad
 {
@@ -27,11 +28,22 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
     
-    self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@"Logout"
+    friendsAroundYouViewController =  [[FriendsAroundYouViewController alloc]
+                                       initWithNibName:@"FriendsAroundYouViewController"
+                                       bundle:nil];
+    
+    [self.navigationItem setTitle:@"My Profile"];
+    self.navigationItem.leftBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"About Us"
                                      style:UIBarButtonItemStyleBordered
                                     target:self
-                                    action:@selector(logout:)];
+                                    action:@selector(aboutUsButtonPressed:)];
+    
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Logout"
+                                     style:UIBarButtonSystemItemAction
+                                    target:self
+                                    action:@selector(logOutButtonPressed:)];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -47,6 +59,7 @@
             {
                 userNameLabel.text = user.name;
                 profilePicture.profileID = user.id;
+                friendsAroundYouViewController.faceBook_Id = user.id;
                 [self storeUserDetailsToDatabase];
             }
             else
@@ -60,31 +73,16 @@
     [super didReceiveMemoryWarning];
 }
 
--(void)logout:(id)sender
-{
-    [FBSession.activeSession closeAndClearTokenInformation];
-}
-
 -(void)storeUserDetailsToDatabase
 {
     NSString *content =
-    [NSString stringWithFormat:@"user[fullname]=%@&user[user_facebook_uid]=%@&user[facebook_access_token]=%@&user[current_latitude]=%@&user[current_longitude]=%@",
-     userNameLabel.text,profilePicture.profileID,FBSession.activeSession.accessToken,currentLatitude,currentLongitude];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://173.255.195.108:3011/users"]];
+    [NSString stringWithFormat:@"user[fullname]=%@&user[user_facebook_uid]=%@&user[facebook_access_token]=%@&user[current_latitude]=%@&user[current_longitude]=%@",userNameLabel.text,profilePicture.profileID,FBSession.activeSession.accessToken,currentLatitude,currentLongitude];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:
+                                    [NSURL URLWithString:@"http://173.255.195.108:3011/users"]];
     [request setValue:@"Content-Type" forHTTPHeaderField:@"application/x-www-form-urlencoded"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
     [NSURLConnection connectionWithRequest:request delegate:self];
-}
-
--(IBAction)ok:(id)sender
-{
-    FriendsAroundYouViewController *friendsAroundYouViewController =
-    [[FriendsAroundYouViewController alloc] initWithNibName:@"FriendsAroundYouViewController"
-                                                     bundle:nil];
-    [self presentViewController:friendsAroundYouViewController
-                       animated:YES
-                     completion:Nil];
 }
 
 -(void)locationManager:(CLLocationManager *)manager
@@ -94,6 +92,7 @@
     CLLocation *currentLocation = [locations lastObject];
     currentLongitude = [NSNumber numberWithDouble:currentLocation.coordinate.longitude];
     currentLatitude = [NSNumber numberWithDouble:currentLocation.coordinate.latitude];
+    friendsAroundYouViewController.location = currentLocation;
 }
 
 -(void)locationManager:(CLLocationManager *)manager
@@ -109,15 +108,38 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    NSLog(@"data ++%@",data);
+//    NSLog(@"data ++%@",data);
     [self.responseData appendData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSLog(@"finish loading");
-    id response = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
-    NSLog(@"id  +++++%@",response);
+//    id response = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
+//    NSLog(@"id  +++++%@",response);
+}
+
+
+-(IBAction)continueButtonPressed:(id)sender
+{
+    [self presentViewController:friendsAroundYouViewController
+                       animated:YES
+                     completion:Nil];
+}
+
+-(void)logOutButtonPressed:(id)sender
+{
+    [FBSession.activeSession closeAndClearTokenInformation];
+}
+
+-(void)aboutUsButtonPressed:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"About Us"
+                                                    message:@"For any comments or feedbacks please mail us at: careers@startupsourcing.com"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end
