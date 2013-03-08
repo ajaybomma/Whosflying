@@ -129,86 +129,86 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(tableView.tag == 1)
-    {
-        PostCommentViewController *postCommentViewController =
-        [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController"
-                                                    bundle:nil];
-        [self presentViewController:postCommentViewController animated:YES completion:nil];
-        if(searching)
-        {
-            postCommentViewController.profilePicture.profileID =
-            [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"user_facebook_uid"];
-            postCommentViewController.friendNameLabel.text =
-            [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"user_name"];
-            postCommentViewController.friendId =
-            [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"user_facebook_uid"];
-        }
-        else
-        {
-            postCommentViewController.profilePicture.profileID =
-            [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"user_facebook_uid"];
-            postCommentViewController.friendNameLabel.text =
-            [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"user_name"];
-            postCommentViewController.friendId =
-            [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"user_facebook_uid"];
-        }
-    }
-    else
-    {
-        [self.optionsView setHidden:YES];
-        switch (indexPath.row) {
-                case 0:
-            {
-                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://173.255.195.108:3011/users/near_by?uid=%@&min=0&max=10",faceBook_Id]]];
-                [request setHTTPMethod:@"GET"];
-                [NSURLConnection connectionWithRequest:request delegate:self];
-                break;
-            }
-                case 1:
-            {
-                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://173.255.195.108:3011/users/near_by?uid=%@&min=0&max=20",faceBook_Id]]];
-                [request setHTTPMethod:@"GET"];
-                [NSURLConnection connectionWithRequest:request delegate:self];
-                break;
-            }
-            case 2:
-            {
-                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://173.255.195.108:3011/users/near_by?uid=%@&min=0&max=30",faceBook_Id]]];
-                [request setHTTPMethod:@"GET"];
-                [NSURLConnection connectionWithRequest:request delegate:self];
-                break;
-            }
-            case 3: if (!placePickerController)
-            {
-                placePickerController = [[FBPlacePickerViewController alloc]
-                                         initWithNibName:nil bundle:nil];
-                placePickerController.title = @"Select a restaurant";
-                placePickerController.navigationItem.leftBarButtonItem =
-                [[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                                 style:UIBarButtonItemStyleBordered
-                                                target:self
-                                                action:@selector(Back:)];
-            }
-                placePickerController.locationCoordinate = location.coordinate;
-                placePickerController.radiusInMeters = 1500;
-                placePickerController.resultsLimit = 50;
-                placePickerController.searchText = @"restaurant";
-                [placePickerController loadData];
-                UINavigationController *navigationController =
-                [[UINavigationController alloc] initWithRootViewController:placePickerController];
-                [self presentViewController:navigationController animated:TRUE completion:Nil];
-                break;
-        }
-    }
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if(tableView.tag == 1)
+//    {
+//        PostCommentViewController *postCommentViewController =
+//        [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController"
+//                                                    bundle:nil];
+//        [self presentViewController:postCommentViewController animated:YES completion:nil];
+//        if(searching)
+//        {
+//            postCommentViewController.profilePicture.profileID =
+//            [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"user_facebook_uid"];
+//            postCommentViewController.friendNameLabel.text =
+//            [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"user_name"];
+//            postCommentViewController.friendId =
+//            [[listOfSearchedFriends objectAtIndex:indexPath.row] objectForKey:@"user_facebook_uid"];
+//        }
+//        else
+//        {
+//            postCommentViewController.profilePicture.profileID =
+//            [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"user_facebook_uid"];
+//            postCommentViewController.friendNameLabel.text =
+//            [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"user_name"];
+//            postCommentViewController.friendId =
+//            [[matchedFriendsArray objectAtIndex:indexPath.row] objectForKey:@"user_facebook_uid"];
+//        }
+//    }
+//    else
+//    {
+//        [self.optionsView setHidden:YES];
+//        switch (indexPath.row) {
+//                case 0:
+//            {
+//                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://173.255.195.108:3011/users/near_by?uid=%@&min=0&max=10",faceBook_Id]]];
+//                [request setHTTPMethod:@"GET"];
+//                [NSURLConnection connectionWithRequest:request delegate:self];
+//                break;
+//            }
+//                case 1:
+//            {
+//                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://173.255.195.108:3011/users/near_by?uid=%@&min=0&max=20",faceBook_Id]]];
+//                [request setHTTPMethod:@"GET"];
+//                [NSURLConnection connectionWithRequest:request delegate:self];
+//                break;
+//            }
+//            case 2:
+//            {
+//                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://173.255.195.108:3011/users/near_by?uid=%@&min=0&max=30",faceBook_Id]]];
+//                [request setHTTPMethod:@"GET"];
+//                [NSURLConnection connectionWithRequest:request delegate:self];
+//                break;
+//            }
+//            case 3: if (!placePickerController)
+//            {
+//                placePickerController = [[FBPlacePickerViewController alloc]
+//                                         initWithNibName:nil bundle:nil];
+//                placePickerController.title = @"Select a restaurant";
+//                placePickerController.navigationItem.leftBarButtonItem =
+//                [[UIBarButtonItem alloc] initWithTitle:@"Back"
+//                                                 style:UIBarButtonItemStyleBordered
+//                                                target:self
+//                                                action:@selector(Back:)];
+//            }
+//                placePickerController.locationCoordinate = location.coordinate;
+//                placePickerController.radiusInMeters = 1500;
+//                placePickerController.resultsLimit = 50;
+//                placePickerController.searchText = @"restaurant";
+//                [placePickerController loadData];
+//                UINavigationController *navigationController =
+//                [[UINavigationController alloc] initWithRootViewController:placePickerController];
+//                [self presentViewController:navigationController animated:TRUE completion:Nil];
+//                break;
+//        }
+//    }
+//}
 
-- (IBAction)Back:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:Nil];
-}
+//- (IBAction)Back:(id)sender
+//{
+//    [self dismissViewControllerAnimated:YES completion:Nil];
+//}
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar
 {
