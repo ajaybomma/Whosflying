@@ -22,7 +22,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        postParameters = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -30,9 +29,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     kPlaceholderPostMessage = @"Say something to your friend..";
+    postParameters = [NSMutableDictionary dictionary];
+    kPlaceholderPostMessage = @"Say something to your friend..";
     [self resetPostMessage];
     postButton.enabled = NO;
+    NSLog(@"view frame is +++%@",NSStringFromCGRect(self.commentsView.frame));
+    NSLog(@"text view frame is +++%@",NSStringFromCGRect(commentsTextView.frame));
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,26 +52,22 @@
     if(![commentsTextView.text isEqualToString:kPlaceholderPostMessage])
     {
         postButton.enabled = YES;
-        if(![commentsTextView.text isEqualToString:kPlaceholderPostMessage] &&
-       ![commentsTextView.text isEqualToString:@""])
-        {
-            [postParameters setObject:commentsTextView.text forKey:@"message"];
-            [postParameters setObject:friendId forKey:@"friend_id"];
-        }
+        [postParameters setObject:commentsTextView.text forKey:@"message"];
+        [postParameters setObject:friendId forKey:@"friend_id"];
     
         if([FBSession.activeSession.permissions indexOfObject:@"publish_stream"] == NSNotFound)
         {
-            [FBSession.activeSession reauthorizeWithPublishPermissions:[NSArray arrayWithObjects:@"publish_stream",nil]
-                                                       defaultAudience:FBSessionDefaultAudienceFriends
-                                                     completionHandler:^(FBSession *session, NSError *error){
+            [FBSession.activeSession reauthorizeWithPublishPermissions:[NSArray
+                                     arrayWithObjects:@"publish_stream",nil]
+                                    defaultAudience:FBSessionDefaultAudienceFriends
+                                    completionHandler:^(FBSession *session, NSError *error)
+            {
                                                      [self publishStory];
                                                  }];
         }
         else
             [self publishStory];
     }
-    else
-        postButton.enabled = NO;
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -78,17 +76,20 @@
     {
         textView.text = @"";
         textView.textColor = [UIColor blackColor];
+        self.mainView.frame = CGRectMake(0, -130, 320, 460);
+        
+        NSLog(@"view frame is +++%@",NSStringFromCGRect(self.commentsView.frame));
+        NSLog(@"text view frame is +++%@",NSStringFromCGRect(commentsTextView.frame));
     }
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     if ([textView.text isEqualToString:@""] )
-    {
         [self resetPostMessage];
-    }
     else
         postButton.enabled = YES;
+    self.mainView.frame = CGRectMake(0, 0, 320, 460);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *) event
@@ -116,6 +117,7 @@
                                               NSError *error)
      {
          NSString *alertText;
+         NSLog(@"error +++%@",error);
          if (error)
          {
              alertText = [NSString stringWithFormat:

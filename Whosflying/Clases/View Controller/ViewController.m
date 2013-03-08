@@ -22,6 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.responseData = [[NSMutableData alloc]init];
     locationManager = [[CLLocationManager alloc] init];
     [locationManager setDelegate:self];
     locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -49,7 +50,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.responseData = [[NSMutableData alloc]init];
     if(FBSession.activeSession.isOpen)
     {
         [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection,
@@ -77,8 +77,10 @@
 {
     NSString *content =
     [NSString stringWithFormat:@"user[fullname]=%@&user[user_facebook_uid]=%@&user[facebook_access_token]=%@&user[current_latitude]=%@&user[current_longitude]=%@",userNameLabel.text,profilePicture.profileID,FBSession.activeSession.accessToken,currentLatitude,currentLongitude];
+ 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:
                                     [NSURL URLWithString:@"http://173.255.195.108:3011/users"]];
+    
     [request setValue:@"Content-Type" forHTTPHeaderField:@"application/x-www-form-urlencoded"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[content dataUsingEncoding:NSUTF8StringEncoding]];
@@ -108,15 +110,16 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-//    NSLog(@"data ++%@",data);
+    NSLog(@"data ++%@",data);
     [self.responseData appendData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSLog(@"finish loading");
-//    id response = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
-//    NSLog(@"id  +++++%@",response);
+    NSLog(@"response data +++%@",self.responseData);
+    id response = [NSJSONSerialization JSONObjectWithData:self.responseData options:kNilOptions error:nil];
+    NSLog(@"id  +++++%@",response);
 }
 
 

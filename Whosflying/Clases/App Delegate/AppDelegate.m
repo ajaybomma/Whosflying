@@ -10,6 +10,8 @@
 
 #import "ViewController.h"
 
+#import "UIViewController+ProgressSheet.h"
+
 @implementation AppDelegate
 @synthesize navController;
 @synthesize mainViewController;
@@ -73,7 +75,9 @@
                       error:(NSError *)error
 {
     switch (state) {
-        case FBSessionStateOpen: {
+        case FBSessionStateOpen:
+        {
+            
             UIViewController *topViewController =
             [self.navController topViewController];
             if ([[topViewController presentedViewController]
@@ -109,7 +113,8 @@
                                        allowLoginUI:YES
                                   completionHandler:^(FBSession *session,
                                                       FBSessionState status,
-                                                      NSError *error)  {
+                                                      NSError *error)
+    {
         [self sessionStateChanged:session state:status error:error ];
         [FBSession setActiveSession:session];}];
 }

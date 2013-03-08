@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *friendNameLabel;
 @property (strong, nonatomic) NSMutableDictionary *postParameters;
 @property (strong, nonatomic) NSString *friendId;
+@property (strong, nonatomic) IBOutlet UIView *commentsView;
+@property (strong, nonatomic) IBOutlet UIView *mainView;
 
 -(IBAction)cancelButtonTapped:(id)sender;
 -(IBAction)postButtonTapped:(id)sender;

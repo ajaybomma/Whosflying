@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F59D63816E9A47C00F8B110 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F59D62516E9A47C00F8B110 /* AppDelegate.m */; };
+		2F59D63916E9A47C00F8B110 /* FriendsAroundYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F59D62816E9A47C00F8B110 /* FriendsAroundYouViewController.m */; };
+		2F59D63A16E9A47C00F8B110 /* FriendsAroundYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F59D62916E9A47C00F8B110 /* FriendsAroundYouViewController.xib */; };
+		2F59D63B16E9A47C00F8B110 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F59D62C16E9A47C00F8B110 /* LoginViewController.m */; };
+		2F59D63C16E9A47C00F8B110 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F59D62D16E9A47C00F8B110 /* LoginViewController.xib */; };
+		2F59D63D16E9A47C00F8B110 /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F59D63016E9A47C00F8B110 /* PostCommentViewController.m */; };
+		2F59D63E16E9A47C00F8B110 /* PostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F59D63116E9A47C00F8B110 /* PostCommentViewController.xib */; };
+		2F59D63F16E9A47C00F8B110 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F59D63416E9A47C00F8B110 /* Cell.m */; };
+		2F59D64016E9A47C00F8B110 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F59D63716E9A47C00F8B110 /* ViewController.m */; };
+		2F59D65816E9A6EA00F8B110 /* UIViewController+ProgressSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F59D65716E9A6EA00F8B110 /* UIViewController+ProgressSheet.m */; };
 		2F68CA6616DC802400FB5D0A /* facebook-login-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F68CA6516DC802400FB5D0A /* facebook-login-button.png */; };
 		2F68CA7D16DC85AA00FB5D0A /* Continue Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F68CA7C16DC85AA00FB5D0A /* Continue Image.png */; };
 		2F68CA7F16DC882300FB5D0A /* Options.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F68CA7E16DC882300FB5D0A /* Options.png */; };
@@ -15,11 +25,9 @@
 		FA470A45169FED4D00558CD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA470A44169FED4D00558CD3 /* CoreGraphics.framework */; };
 		FA470A4B169FED4D00558CD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA470A49169FED4D00558CD3 /* InfoPlist.strings */; };
 		FA470A4D169FED4D00558CD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA470A4C169FED4D00558CD3 /* main.m */; };
-		FA470A51169FED4D00558CD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA470A50169FED4D00558CD3 /* AppDelegate.m */; };
 		FA470A53169FED4D00558CD3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FA470A52169FED4D00558CD3 /* Default.png */; };
 		FA470A55169FED4D00558CD3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA470A54169FED4D00558CD3 /* Default@2x.png */; };
 		FA470A57169FED4D00558CD3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA470A56169FED4D00558CD3 /* Default-568h@2x.png */; };
-		FA470A5A169FED4D00558CD3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA470A59169FED4D00558CD3 /* ViewController.m */; };
 		FA470A5D169FED4E00558CD3 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA470A5B169FED4E00558CD3 /* ViewController.xib */; };
 		FA470A6B169FEF5E00558CD3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA470A6A169FEF5E00558CD3 /* FacebookSDK.framework */; };
 		FA470A6D169FEF8F00558CD3 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA470A6C169FEF8F00558CD3 /* FacebookSDKResources.bundle */; };
@@ -27,18 +35,28 @@
 		FA470A72169FEFB500558CD3 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA470A70169FEFB500558CD3 /* Accounts.framework */; };
 		FA470A73169FEFB500558CD3 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA470A71169FEFB500558CD3 /* AdSupport.framework */; };
 		FA470A75169FEFBD00558CD3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA470A74169FEFBD00558CD3 /* Social.framework */; };
-		FA470A79169FF45200558CD3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA470A77169FF45200558CD3 /* LoginViewController.m */; };
-		FA470A7A169FF45200558CD3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA470A78169FF45200558CD3 /* LoginViewController.xib */; };
 		FA59745A16AD5460008A6B9F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA59745916AD5460008A6B9F /* CoreLocation.framework */; };
 		FA59745D16AD5467008A6B9F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA59745C16AD5467008A6B9F /* MapKit.framework */; };
-		FA90C30316B14DBE00AB3A6C /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA90C30116B14DBE00AB3A6C /* PostCommentViewController.m */; };
-		FA90C30416B14DBE00AB3A6C /* PostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA90C30216B14DBE00AB3A6C /* PostCommentViewController.xib */; };
-		FADEE14416A7EDC30049234B /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = FADEE14316A7EDC30049234B /* Cell.m */; };
-		FAEB265F16B7A602003E172C /* FriendsAroundYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEB265D16B7A601003E172C /* FriendsAroundYouViewController.m */; };
-		FAEB266016B7A602003E172C /* FriendsAroundYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEB265E16B7A601003E172C /* FriendsAroundYouViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F59D62416E9A47C00F8B110 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2F59D62516E9A47C00F8B110 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2F59D62716E9A47C00F8B110 /* FriendsAroundYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsAroundYouViewController.h; sourceTree = "<group>"; };
+		2F59D62816E9A47C00F8B110 /* FriendsAroundYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsAroundYouViewController.m; sourceTree = "<group>"; };
+		2F59D62916E9A47C00F8B110 /* FriendsAroundYouViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsAroundYouViewController.xib; sourceTree = "<group>"; };
+		2F59D62B16E9A47C00F8B110 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		2F59D62C16E9A47C00F8B110 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2F59D62D16E9A47C00F8B110 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		2F59D62F16E9A47C00F8B110 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommentViewController.h; sourceTree = "<group>"; };
+		2F59D63016E9A47C00F8B110 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommentViewController.m; sourceTree = "<group>"; };
+		2F59D63116E9A47C00F8B110 /* PostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCommentViewController.xib; sourceTree = "<group>"; };
+		2F59D63316E9A47C00F8B110 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		2F59D63416E9A47C00F8B110 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		2F59D63616E9A47C00F8B110 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2F59D63716E9A47C00F8B110 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2F59D65616E9A6EA00F8B110 /* UIViewController+ProgressSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressSheet.h"; sourceTree = "<group>"; };
+		2F59D65716E9A6EA00F8B110 /* UIViewController+ProgressSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressSheet.m"; sourceTree = "<group>"; };
 		2F68CA6516DC802400FB5D0A /* facebook-login-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-login-button.png"; sourceTree = "<group>"; };
 		2F68CA7C16DC85AA00FB5D0A /* Continue Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Continue Image.png"; sourceTree = "<group>"; };
 		2F68CA7E16DC882300FB5D0A /* Options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Options.png; sourceTree = "<group>"; };
@@ -50,13 +68,9 @@
 		FA470A4A169FED4D00558CD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FA470A4C169FED4D00558CD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FA470A4E169FED4D00558CD3 /* Whosflying-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Whosflying-Prefix.pch"; sourceTree = "<group>"; };
-		FA470A4F169FED4D00558CD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		FA470A50169FED4D00558CD3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FA470A52169FED4D00558CD3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FA470A54169FED4D00558CD3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		FA470A56169FED4D00558CD3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		FA470A58169FED4D00558CD3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FA470A59169FED4D00558CD3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FA470A5C169FED4E00558CD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		FA470A6A169FEF5E00558CD3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Whosflying/FacebookSDK.framework; sourceTree = "<group>"; };
 		FA470A6C169FEF8F00558CD3 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = Whosflying/FacebookSDKResources.bundle; sourceTree = "<group>"; };
@@ -64,19 +78,8 @@
 		FA470A70169FEFB500558CD3 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		FA470A71169FEFB500558CD3 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FA470A74169FEFBD00558CD3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		FA470A76169FF45200558CD3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		FA470A77169FF45200558CD3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		FA470A78169FF45200558CD3 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		FA59745916AD5460008A6B9F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FA59745C16AD5467008A6B9F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		FA90C30016B14DBE00AB3A6C /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommentViewController.h; sourceTree = "<group>"; };
-		FA90C30116B14DBE00AB3A6C /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommentViewController.m; sourceTree = "<group>"; };
-		FA90C30216B14DBE00AB3A6C /* PostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCommentViewController.xib; sourceTree = "<group>"; };
-		FADEE14216A7EDC30049234B /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
-		FADEE14316A7EDC30049234B /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
-		FAEB265C16B7A601003E172C /* FriendsAroundYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsAroundYouViewController.h; sourceTree = "<group>"; };
-		FAEB265D16B7A601003E172C /* FriendsAroundYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsAroundYouViewController.m; sourceTree = "<group>"; };
-		FAEB265E16B7A601003E172C /* FriendsAroundYouViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsAroundYouViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F59D62216E9A47C00F8B110 /* Clases */ = {
+			isa = PBXGroup;
+			children = (
+				2F59D62316E9A47C00F8B110 /* App Delegate */,
+				2F59D62616E9A47C00F8B110 /* Friends Around You View Controller */,
+				2F59D62A16E9A47C00F8B110 /* Login View Controller */,
+				2F59D62E16E9A47C00F8B110 /* Post comments Controller */,
+				2F59D63216E9A47C00F8B110 /* Tableview Cells */,
+				2F59D63516E9A47C00F8B110 /* View Controller */,
+			);
+			path = Clases;
+			sourceTree = "<group>";
+		};
+		2F59D62316E9A47C00F8B110 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				2F59D62416E9A47C00F8B110 /* AppDelegate.h */,
+				2F59D62516E9A47C00F8B110 /* AppDelegate.m */,
+			);
+			path = "App Delegate";
+			sourceTree = "<group>";
+		};
+		2F59D62616E9A47C00F8B110 /* Friends Around You View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F59D62716E9A47C00F8B110 /* FriendsAroundYouViewController.h */,
+				2F59D62816E9A47C00F8B110 /* FriendsAroundYouViewController.m */,
+				2F59D62916E9A47C00F8B110 /* FriendsAroundYouViewController.xib */,
+			);
+			path = "Friends Around You View Controller";
+			sourceTree = "<group>";
+		};
+		2F59D62A16E9A47C00F8B110 /* Login View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F59D62B16E9A47C00F8B110 /* LoginViewController.h */,
+				2F59D62C16E9A47C00F8B110 /* LoginViewController.m */,
+				2F59D62D16E9A47C00F8B110 /* LoginViewController.xib */,
+			);
+			path = "Login View Controller";
+			sourceTree = "<group>";
+		};
+		2F59D62E16E9A47C00F8B110 /* Post comments Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F59D62F16E9A47C00F8B110 /* PostCommentViewController.h */,
+				2F59D63016E9A47C00F8B110 /* PostCommentViewController.m */,
+				2F59D63116E9A47C00F8B110 /* PostCommentViewController.xib */,
+			);
+			path = "Post comments Controller";
+			sourceTree = "<group>";
+		};
+		2F59D63216E9A47C00F8B110 /* Tableview Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2F59D63316E9A47C00F8B110 /* Cell.h */,
+				2F59D63416E9A47C00F8B110 /* Cell.m */,
+			);
+			path = "Tableview Cells";
+			sourceTree = "<group>";
+		};
+		2F59D63516E9A47C00F8B110 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F59D63616E9A47C00F8B110 /* ViewController.h */,
+				FA470A5B169FED4E00558CD3 /* ViewController.xib */,
+				2F59D63716E9A47C00F8B110 /* ViewController.m */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		2F59D65416E9A6EA00F8B110 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2F59D65516E9A6EA00F8B110 /* UIViewController */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2F59D65516E9A6EA00F8B110 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2F59D65616E9A6EA00F8B110 /* UIViewController+ProgressSheet.h */,
+				2F59D65716E9A6EA00F8B110 /* UIViewController+ProgressSheet.m */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
 		FA470A31169FED4D00558CD3 = {
 			isa = PBXGroup;
 			children = (
@@ -140,22 +231,8 @@
 		FA470A46169FED4D00558CD3 /* Whosflying */ = {
 			isa = PBXGroup;
 			children = (
-				FA470A4F169FED4D00558CD3 /* AppDelegate.h */,
-				FA470A50169FED4D00558CD3 /* AppDelegate.m */,
-				FA470A58169FED4D00558CD3 /* ViewController.h */,
-				FA470A59169FED4D00558CD3 /* ViewController.m */,
-				FA470A76169FF45200558CD3 /* LoginViewController.h */,
-				FA470A77169FF45200558CD3 /* LoginViewController.m */,
-				FA90C30016B14DBE00AB3A6C /* PostCommentViewController.h */,
-				FA90C30116B14DBE00AB3A6C /* PostCommentViewController.m */,
-				FADEE14216A7EDC30049234B /* Cell.h */,
-				FADEE14316A7EDC30049234B /* Cell.m */,
-				FAEB265C16B7A601003E172C /* FriendsAroundYouViewController.h */,
-				FAEB265D16B7A601003E172C /* FriendsAroundYouViewController.m */,
-				FAEB265E16B7A601003E172C /* FriendsAroundYouViewController.xib */,
-				FA470A78169FF45200558CD3 /* LoginViewController.xib */,
-				FA470A5B169FED4E00558CD3 /* ViewController.xib */,
-				FA90C30216B14DBE00AB3A6C /* PostCommentViewController.xib */,
+				2F59D65416E9A6EA00F8B110 /* Common */,
+				2F59D62216E9A47C00F8B110 /* Clases */,
 				FA470A47169FED4D00558CD3 /* Supporting Files */,
 			);
 			path = Whosflying;
@@ -233,12 +310,12 @@
 				FA470A5D169FED4E00558CD3 /* ViewController.xib in Resources */,
 				FA470A6D169FEF8F00558CD3 /* FacebookSDKResources.bundle in Resources */,
 				FA470A6F169FEF9C00558CD3 /* FBUserSettingsViewResources.bundle in Resources */,
-				FA470A7A169FF45200558CD3 /* LoginViewController.xib in Resources */,
-				FA90C30416B14DBE00AB3A6C /* PostCommentViewController.xib in Resources */,
-				FAEB266016B7A602003E172C /* FriendsAroundYouViewController.xib in Resources */,
 				2F68CA6616DC802400FB5D0A /* facebook-login-button.png in Resources */,
 				2F68CA7D16DC85AA00FB5D0A /* Continue Image.png in Resources */,
 				2F68CA7F16DC882300FB5D0A /* Options.png in Resources */,
+				2F59D63A16E9A47C00F8B110 /* FriendsAroundYouViewController.xib in Resources */,
+				2F59D63C16E9A47C00F8B110 /* LoginViewController.xib in Resources */,
+				2F59D63E16E9A47C00F8B110 /* PostCommentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,12 +327,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA470A4D169FED4D00558CD3 /* main.m in Sources */,
-				FA470A51169FED4D00558CD3 /* AppDelegate.m in Sources */,
-				FA470A5A169FED4D00558CD3 /* ViewController.m in Sources */,
-				FA470A79169FF45200558CD3 /* LoginViewController.m in Sources */,
-				FADEE14416A7EDC30049234B /* Cell.m in Sources */,
-				FA90C30316B14DBE00AB3A6C /* PostCommentViewController.m in Sources */,
-				FAEB265F16B7A602003E172C /* FriendsAroundYouViewController.m in Sources */,
+				2F59D63816E9A47C00F8B110 /* AppDelegate.m in Sources */,
+				2F59D63916E9A47C00F8B110 /* FriendsAroundYouViewController.m in Sources */,
+				2F59D63B16E9A47C00F8B110 /* LoginViewController.m in Sources */,
+				2F59D63D16E9A47C00F8B110 /* PostCommentViewController.m in Sources */,
+				2F59D63F16E9A47C00F8B110 /* Cell.m in Sources */,
+				2F59D64016E9A47C00F8B110 /* ViewController.m in Sources */,
+				2F59D65816E9A6EA00F8B110 /* UIViewController+ProgressSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +354,7 @@
 				FA470A5C169FED4E00558CD3 /* en */,
 			);
 			name = ViewController.xib;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

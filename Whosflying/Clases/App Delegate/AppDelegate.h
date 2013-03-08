@@ -21,5 +21,7 @@
 @property (strong, nonatomic) UINavigationController *navController;
 
 -(void)openSession;
+
 -(void)showLoginView;
+
 @end
